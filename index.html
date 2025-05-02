@@ -1,156 +1,239 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { CalendarRange, FileText, Users, Map } from "lucide-react";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sustainability with Earth Observation &amp; AI – ICCV 2025 Workshop</title>
+  <style>
+    :root { --accent: #10b981; }
+    * { box-sizing: border-box; scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      color: #111;
+      background: #f8fafc;
+    }
 
-// Hero background image — replace `url('/hero.jpg')` with a remote-sensing themed image
-const heroBg = "bg-[url('/hero.jpg')] bg-cover bg-center";
+    /* ---------- Hero ---------- */
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: url("hero.jpg") center / cover no-repeat;
+      position: relative;
+      color: #fff;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(2px);
+    }
+    .hero > * { position: relative; z-index: 1; }
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      margin: 0 0 1rem;
+      font-weight: 800;
+    }
 
-const Section = ({ id, title, children }) => (
-  <section id={id} className="min-h-screen snap-start flex flex-col justify-center items-center px-4 md:px-12 py-24 gap-12">
-    <motion.h2
-      className="text-4xl md:text-6xl font-extrabold text-center"
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-    >
-      {title}
-    </motion.h2>
-    <div className="max-w-5xl w-full flex flex-col items-center gap-8">
-      {children}
-    </div>
-  </section>
-);
+    /* ---------- Sections ---------- */
+    h2 {
+      font-size: 2rem;
+      margin: 0 0 1.5rem;
+      font-weight: 700;
+      text-align: center;
+      color: var(--accent);
+    }
+    section {
+      padding: 4rem 1rem;
+      max-width: 900px;
+      margin: auto;
+    }
 
-const Hero = () => (
-  <header className={`${heroBg} relative min-h-screen flex flex-col justify-center items-center text-white snap-start`}>    
-    <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
-    <motion.div
-      className="relative z-10 text-center px-4"
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 1 }}
-    >
-      <h1 className="text-5xl md:text-7xl font-extrabold mb-6 drop-shadow-lg">Sustainability with Earth Observation & AI</h1>
-      <p className="text-lg md:text-2xl mb-8 max-w-3xl mx-auto font-light">
-        An ICCV 2025 Workshop exploring innovative AI solutions for a sustainable future through Earth observation.
-      </p>
-      <Button size="lg" asChild>
-        <a href="#call-for-papers">Submit Your Paper</a>
-      </Button>
-    </motion.div>
-  </header>
-);
+    /* ---------- Buttons ---------- */
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      border-radius: 9999px;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+    .btn:hover { opacity: 0.85; }
 
-const Introduction = () => (
-  <Section id="introduction" title="Introduction">
-    <p className="leading-relaxed text-base md:text-lg text-justify">
-      The workshop aims to bring together researchers, practitioners and policy-makers to advance the state-of-the-art in using artificial intelligence for Earth observation with a focus on sustainability challenges. Topics include climate monitoring, disaster response, biodiversity, agriculture, urban development, and more.
+    /* ---------- Card Grid ---------- */
+    .cardgrid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+    .card {
+      background: #fff;
+      border-radius: 1rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      padding: 2rem;
+      text-align: center;
+      flex: 1 1 220px;
+      max-width: 280px;
+    }
+    .card img {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+
+    /* ---------- Timeline ---------- */
+    .timeline {
+      position: relative;
+      border-left: 2px solid var(--accent);
+      padding-left: 1.5rem;
+      list-style: none;
+      max-width: 500px;
+      margin: auto;
+    }
+    .timeline li {
+      margin: 0 0 1.5rem;
+      position: relative;
+    }
+    .timeline li::before {
+      content: "";
+      position: absolute;
+      left: -11px;
+      top: 0;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    /* ---------- Footer ---------- */
+    footer {
+      padding: 2rem 1rem;
+      text-align: center;
+      font-size: 0.875rem;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <!-- ================= Hero Banner ================= -->
+  <header class="hero">
+    <h1>Sustainability with Earth Observation &amp; AI</h1>
+    <p style="max-width: 700px; margin: 0 auto 2rem;">
+      An ICCV 2025 Workshop exploring innovative AI solutions for a sustainable future through Earth observation.
     </p>
-  </Section>
-);
+    <a href="#call" class="btn">Submit Your Paper</a>
+  </header>
 
-const CallForPapers = () => (
-  <Section id="call-for-papers" title="Call for Papers">
-    <Card className="w-full">
-      <CardContent className="p-8 space-y-6">
-        <ul className="list-disc list-inside space-y-2 text-base md:text-lg">
-          <li>Submission deadline: <strong>July 12, 2025 (AoE)</strong></li>
-          <li>Paper length: up to 8 pages (excluding references), ICCV template</li>
-          <li>Double-blind review; accepted papers will be published in ICCV Workshop Proceedings</li>
-          <li>Focus areas: <em>Climate & Environment, Sustainable Agriculture, Disaster Response, Urban Resilience, Biodiversity, Energy, and Cross‑Sensor Data Fusion</em></li>
-        </ul>
-        <Button size="lg" asChild className="w-fit">
-          <a href="https://cmt3.research.microsoft.com/ICCVEOAI2025">Submit via CMT</a>
-        </Button>
-      </CardContent>
-    </Card>
-  </Section>
-);
+  <!-- ================= Main Content ================= -->
+  <main>
+    <!-- Introduction -->
+    <section id="intro">
+      <h2>Introduction</h2>
+      <p>
+        The workshop brings together researchers, practitioners, and policy‑makers to advance the
+        state‑of‑the‑art in applying artificial intelligence to Earth observation for sustainability
+        challenges. Topics include climate monitoring, disaster response, biodiversity, agriculture,
+        urban development, clean energy, and cross‑sensor data fusion.
+      </p>
+    </section>
 
-const SpeakerCard = ({ name, affiliation, img }) => (
-  <Card className="w-full md:w-80 hover:shadow-2xl transition-shadow">
-    <CardContent className="p-6 flex flex-col items-center gap-4">
-      <img src={img} alt={name} className="w-32 h-32 rounded-full object-cover shadow-md" />
-      <h3 className="text-xl font-semibold text-center">{name}</h3>
-      <p className="text-sm text-center opacity-80">{affiliation}</p>
-    </CardContent>
-  </Card>
-);
+    <!-- Call for Papers -->
+    <section id="call">
+      <h2>Call for Papers</h2>
+      <ul>
+        <li><strong>Submission deadline:</strong> July 12, 2025 (AoE)</li>
+        <li>8‑page papers (excluding references) using ICCV format</li>
+        <li>Double‑blind review; accepted papers appear in ICCV Workshop Proceedings</li>
+      </ul>
+      <p>
+        <a href="https://cmt3.research.microsoft.com/ICCVEOAI2025" class="btn" target="_blank"
+          >Submit via CMT</a
+        >
+      </p>
+    </section>
 
-const InvitedSpeakers = () => (
-  <Section id="invited-speakers" title="Invited Speakers">
-    <div className="flex flex-wrap justify-center gap-8">
-      {/* Replace speaker details */}
-      <SpeakerCard name="Prof. Jane Doe" affiliation="Stanford University" img="/speakers/jane.jpg" />
-      <SpeakerCard name="Dr. John Smith" affiliation="NASA Jet Propulsion Laboratory" img="/speakers/john.jpg" />
-      <SpeakerCard name="Dr. Maria García" affiliation="European Space Agency" img="/speakers/maria.jpg" />
-    </div>
-  </Section>
-);
+    <!-- Invited Speakers -->
+    <section id="speakers">
+      <h2>Invited Speakers</h2>
+      <div class="cardgrid">
+        <div class="card">
+          <img src="jane.jpg" alt="Jane Doe" />
+          <h3>xxxx</h3>
+          <p>Stanford University</p>
+        </div>
+        <div class="card">
+          <img src="john.jpg" alt="John Smith" />
+          <h3>xxxx</h3>
+          <p>NASA JPL</p>
+        </div>
+        <div class="card">
+          <img src="maria.jpg" alt="Maria Garcia" />
+          <h3>xxxx</h3>
+          <p>European Space Agency</p>
+        </div>
+      </div>
+    </section>
 
-const OrganizerCard = ({ name, role, img }) => (
-  <Card className="w-full md:w-60">
-    <CardContent className="p-4 flex flex-col items-center gap-2">
-      <img src={img} alt={name} className="w-20 h-20 rounded-full object-cover" />
-      <h4 className="font-medium text-center">{name}</h4>
-      <p className="text-xs text-center opacity-70">{role}</p>
-    </CardContent>
-  </Card>
-);
+    <!-- Organizers -->
+    <section id="organizers">
+      <h2>Organizers</h2>
+      <div class="cardgrid">
+        <div class="card">
+          <img src="zhuo.jpg" alt="Zhuo Zheng" />
+          <h3>Zhuo Zheng</h3>
+          <p>xxx · Stanford University</p>
+        </div>
+        <div class="card">
+          <img src="alex.jpg" alt="Alex Lee" />
+          <h3>xxxx</h3>
+          <p>Program Chair · xx</p>
+        </div>
+        <div class="card">
+          <img src="wei.jpg" alt="Wei Chen" />
+          <h3>xxx</h3>
+          <p>Publicity Chair · xxxx University</p>
+        </div>
+      </div>
+    </section>
 
-const Organizers = () => (
-  <Section id="organizers" title="Organizers">
-    <div className="flex flex-wrap justify-center gap-6">
-      {/* Replace organizer details */}
-      <OrganizerCard name="Zhuo Zheng" role="General Chair · Stanford University" img="/organizers/zhuo.jpg" />
-      <OrganizerCard name="Alex Lee" role="Program Chair · MIT" img="/organizers/alex.jpg" />
-      <OrganizerCard name="Wei Chen" role="Publicity Chair · Tsinghua University" img="/organizers/wei.jpg" />
-    </div>
-  </Section>
-);
+    <!-- Timeline -->
+    <section id="timeline">
+      <h2>Timeline</h2>
+      <ul class="timeline">
+        <li>
+          <strong>Paper Submission Deadline</strong><br />
+          xx, 2025
+        </li>
+        <li>
+          <strong>Notification to Authors</strong><br />
+          August xx, 2025
+        </li>
+        <li>
+          <strong>Camera‑Ready Deadline</strong><br />
+          September xx, 2025
+        </li>
+        <li>
+          <strong>Workshop at ICCV</strong><br />
+          October xx, 2025
+        </li>
+      </ul>
+    </section>
+  </main>
 
-const TimelineItem = ({ icon: Icon, title, date }) => (
-  <motion.div
-    className="relative pl-10 flex flex-col gap-1"
-    initial={{ opacity: 0, x: -50 }}
-    whileInView={{ opacity: 1, x: 0 }}
-    transition={{ duration: 0.5 }}
-  >
-    <Icon className="absolute left-0 top-1 w-6 h-6" />
-    <h5 className="font-semibold">{title}</h5>
-    <span className="text-sm opacity-70">{date}</span>
-  </motion.div>
-);
-
-const Timeline = () => (
-  <Section id="timeline" title="Timeline">
-    <div className="w-full max-w-md space-y-6">
-      <TimelineItem icon={FileText} title="Paper Submission Deadline" date="July 12, 2025" />
-      <TimelineItem icon={Users} title="Notification to Authors" date="August 15, 2025" />
-      <TimelineItem icon={FileText} title="Camera‑Ready Deadline" date="September 5, 2025" />
-      <TimelineItem icon={CalendarRange} title="Workshop at ICCV" date="October 12, 2025" />
-    </div>
-  </Section>
-);
-
-const Footer = () => (
-  <footer className="py-12 text-center text-sm opacity-70">
-    © 2025 Sustainability with Earth Observation & AI — ICCV Workshop. All rights reserved.
+  <!-- ================= Footer ================= -->
+  <footer>
+    © ICCV 2025 Sustainability with Earth Observation &amp; AI Workshop. All rights reserved.
   </footer>
-);
-
-export default function ICCVWorkshopSite() {
-  return (
-    <main className="snap-y snap-mandatory h-screen overflow-y-scroll bg-gray-50 text-gray-800">
-      <Hero />
-      <Introduction />
-      <CallForPapers />
-      <InvitedSpeakers />
-      <Organizers />
-      <Timeline />
-      <Footer />
-    </main>
-  );
-}
+</body>
+</html>
