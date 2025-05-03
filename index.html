@@ -135,8 +135,8 @@
 <body>
   <!-- ================= Hero Banner ================= -->
   <header class="hero">
-    <h1>
-      SEA: Sustainability with Earth Observation &amp; AI
+    <h1 class="morph" data-target="SEA: Sustainability with Earth Observation & AI">
+      <!-- SEA: Sustainability with Earth Observation &amp; AI -->
     </h1>
 
     <p style="max-width: 700px; margin: 0 auto 2rem;">
@@ -216,7 +216,7 @@
       <div class="cardgrid">
         <div class="card">
           <img src="https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=CREpn_AAAAAJ&citpid=7" alt="Zhuo Zheng" />
-          <h3>Zhuo Zheng</h3>
+          <h3 class="morph" data-target="Zhuo Zheng"></h3>Zhuo Zheng</h3>
           <p>Stanford University</p>
         </div>
         <div class="card">
@@ -295,5 +295,25 @@
   <footer>
     © ICCV 2025 Sustainability with Earth Observation &amp; AI Workshop. All rights reserved.
   </footer>
+  <script>
+    /* random card diffusion positions */
+    document.addEventListener('DOMContentLoaded', () => {
+      /* Discrete‑to‑target morphing */
+      const alphabet='A B C D E F G H I J K L M N O P Q R S T U V W X Y Z a b c d e f g h i j k l m n o p q r s t u v w x y z'.split('');
+      function scramble(len){let s='';for(let i=0;i<len;i++){s+=alphabet[Math.floor(Math.random()*alphabet.length)];}return s;}
+      document.querySelectorAll('.morph').forEach((el)=>{
+        const target=el.getAttribute('data-target');
+        let frame=0,maxFrame=15; // 
+        const interval=setInterval(()=>{
+          if(frame>=maxFrame){el.textContent=target;clearInterval(interval);return;}
+          let revealCount=Math.floor(target.length*frame/maxFrame);
+          let shown=target.slice(0,revealCount)+scramble(target.length-revealCount);
+          el.textContent=shown;
+          el.style.fontFamily='var(--font-mono)';
+          frame++;
+        },60);
+      });
+    });
+  </script>
 </body>
 </html>
