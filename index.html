@@ -137,7 +137,227 @@
       font-size: 0.875rem;
       color: #666;
     }
-  </style>
+  
+/* ---- Speaker Cards Adjustments ---- */
+#speakers .cardgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  justify-items: stretch;
+  max-width: 1200px;
+  margin: auto;
+}
+#speakers .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  padding: 1rem;
+  text-align: justify;
+  min-height: 450px;
+}
+#speakers .card h3 {
+  text-align: center;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+#speakers .card img {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 1rem;
+}
+
+
+/* ---- Speaker Cards Vertical Layout ---- */
+#speakers .cardgrid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 800px;
+  margin: auto;
+}
+#speakers .card {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  padding: 1.5rem;
+  min-height: auto;
+  text-align: justify;
+}
+#speakers .card img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 1.5rem;
+}
+#speakers .card h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+#speakers .card p {
+  margin: 0;
+}
+
+
+/* ---- Speaker Cards Fixed Avatar Column Layout ---- */
+#speakers .card {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 1.5rem;
+  align-items: start;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  padding: 1.5rem;
+  text-align: justify;
+}
+#speakers .card img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto;
+}
+#speakers .card h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+#speakers .card p {
+  margin: 0;
+}
+
+
+/* ---- Speaker Section Width Adjustment ---- */
+#speakers {
+  max-width: 900px;
+  margin: auto;
+  padding: 2rem 1rem;
+}
+#speakers .cardgrid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+#speakers .card {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 1.5rem;
+  align-items: start;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  padding: 1.5rem;
+  text-align: justify;
+  width: 100%;
+}
+
+
+/* ---- Final Speaker Width Fix ---- */
+#speakers {
+  max-width: 1200px !important;
+  margin: auto !important;
+  padding: 4rem 1rem !important;
+}
+#speakers .cardgrid {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+}
+
+
+/* ---- Invited Speakers: One-per-row layout ---- */
+#speakers .speaker-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+#speakers .speaker-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 1.25rem;
+  align-items: start;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  padding: 1.25rem;
+}
+#speakers .speaker-row img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto;
+}
+#speakers .speaker-content h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.1rem;
+  text-align: left;
+}
+#speakers .speaker-content p {
+  margin: 0.25rem 0 0;
+  text-align: justify;
+}
+@media (max-width: 640px) {
+  #speakers .speaker-row { grid-template-columns: 100px 1fr; }
+  #speakers .speaker-row img { width: 90px; height: 90px; }
+}
+
+</style>
+
+<style>
+
+/* ---- Invited Speakers Schedule Table ---- */
+.schedule-wrap {
+  margin-top: 2rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1rem;
+}
+.schedule-wrap h3 {
+  margin: 0 0 1rem;
+  text-align: center;
+  color: var(--accent, #0a6);
+  font-size: 1.25rem;
+}
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,.05);
+  font-size: 0.95rem;
+}
+.schedule-table th, .schedule-table td {
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid #eef2f7;
+  text-align: left;
+  vertical-align: top;
+}
+.schedule-table thead th {
+  background: #f1f5f9;
+  font-weight: 700;
+}
+.schedule-table tr:last-child td { border-bottom: none; }
+.schedule-table .time { white-space: nowrap; font-weight: 600; }
+.schedule-table .talk-title { font-weight: 600; }
+@media (max-width: 720px) {
+  .schedule-table { display: block; overflow-x: auto; }
+}
+
+</style>
+
 </head>
 <body>
   <!-- ================= Hero Banner ================= -->
@@ -183,51 +403,126 @@
       </ul>
       <p>
         <a href="https://openreview.net/group?id=thecvf.com/ICCV/2025/Workshop/SEA" class="btn" target="_blank"
-          >Submit via OpenReview</a
-        >
+          >Submit via OpenReview</a>
       </p>
     </section>
 
+    <div class="schedule-wrap" id="speaker-schedule">
+  <h3>Agenda (Oct 19, 2025 · 1–5 pm, Hawaii Time UTC−10)</h3>
+  <table class="schedule-table">
+    <thead>
+      <tr>
+        <th style="width:12ch;">Time</th>
+        <th>Session</th>
+        <th>Speaker</th>
+        <th>Title</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="time">13:00-13:10</td>
+        <td class="talk-title">Opening &amp; Welcome</td>
+        <td>SEA Organizers</td>
+        <td> - </td>
+      </tr>
+      <tr>
+        <td class="time">13:10-13:50</td>
+        <td class="talk-title">Invited Talk</td>
+        <td>Naoto Yokoya</td>
+        <td>Open and Equitable AI for Earth Observation</td>
+      </tr>
+      <tr>
+        <td class="time">13:50-14:30</td>
+        <td class="talk-title">Invited Talk</td>
+        <td>Christopher F. Brown</td>
+        <td>Efficiently Exploiting Full EO Archives Through Embedding Methods</td>
+      </tr>
+      <tr>
+        <td class="time">14:30-14:40</td>
+        <td class="talk-title">Oral presentation</td>
+        <td>paper authors</td>
+        <td>PlantationBench: a multiscale, multimodal remote sensing benchmark for tree plantation mapping under distribution shift</td>
+      </tr>
+      <tr>
+        <td class="time">14:40-14:50</td>
+        <td class="talk-title">Oral presentation</td>
+        <td>paper authors</td>
+        <td>GasTwinFormer: A Hybrid Vision Transformer for Livestock Methane Emission Segmentation and Dietary Classification in Optical Gas Imaging</td>
+      </tr>
+      <tr>
+        <td class="time">14:50-15:00</td>
+        <td class="talk-title">Oral presentation</td>
+        <td>paper authors</td>
+        <td>Towards Large Scale Geostatistical Methane Monitoring with Part-based Object Detection</td>
+      </tr>
+      <tr>
+        <td class="time">15:00-15:30</td>
+        <td class="talk-title">Coffee Break</td>
+        <td>—</td>
+        <td>Coffee &amp; posters</td>
+      </tr>
+      <tr>
+        <td class="time">15:30-16:10</td>
+        <td class="talk-title">Invited Talk</td>
+        <td>Daniel Cusworth</td>
+        <td>The Role of Remote Sensing and AI to Reduce Methane Emissions</td>
+      </tr>
+      <tr>
+        <td class="time">16:10-16:50</td>
+        <td class="talk-title">Invited Talk</td>
+        <td>Piotr Bojanowski</td>
+        <td>Self-supervised representation learning and remote sensing</td>
+      </tr>
+      
+      <tr>
+        <td class="time">16:50-17:00</td>
+        <td class="talk-title">Closing</td>
+        <td>SEA Organizers</td>
+        <td>Awards &amp; wrap-up</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
     <!-- Invited Speakers -->
-    <section id="speakers">
-      <h2>Invited Speakers</h2>
-      <div class="cardgrid">
-        <div class="card">
-          <img src="https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=DJ2KOn8AAAAJ&citpid=7" alt="naoto" />
-          <h3><a href="https://naotoyokoya.com/">Naoto Yokoya</a></h3>
-          <p>The University of Tokyo</p>
-        </div>
-
-        <div class="card">
-          <img src="https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=lJ_oh2EAAAAJ&citpid=5" alt="pio" />
-          <h3><a href="https://scholar.google.com/citations?user=lJ_oh2EAAAAJ&hl=en">Piotr Bojanowski</a></h3>
-          <p>Meta AI Research (DINOv3 team)</p>
-        </div>
-
-        <div class="card">
-          <img src="https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=1v9ooFUAAAAJ&citpid=1" alt="Wenzhe" />
-          <h3><a href="https://eccb.tamu.edu/people/jiao-wenzhe/">Wenzhe Jiao</a></h3>
-          <p>Texas A&M University</p>
-        </div>
-        
-        <!-- <div class="card">
-          <img src="https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=_L1i3RgAAAAJ&citpid=2" alt="Yelu Zeng" />
-          <h3><a href="https://clst.cau.edu.cn/art/2021/11/12/art_31196_796403.html">Yelu Zeng</a></h3>
-          <p>China Agricultural University</p>
-        </div> -->
-        <div class="card">
-          <img src="https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=rBv-4qEAAAAJ&citpid=3" alt="Daniel" />
-          <h3><a href="http://www.dancusworth.com/">Daniel Cusworth</a></h3>
-          <p>Carbon Mapper/NASA JPL</p>
-        </div>
-        
-        <div class="card">
-          <img src="https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=Umm6tPQAAAAJ&citpid=3" alt="chr" />
-          <h3><a href="https://scholar.google.com/citations?user=Umm6tPQAAAAJ&hl=en">Christopher F. Brown</a></h3>
-          <p>Google DeepMind (AlphaEarth team)</p>
-        </div>
+    
+<section id="speakers">
+  <h2>Invited Speakers</h2>
+  <div class="speaker-list">
+    <div class="speaker-row">
+      <img src="https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=DJ2KOn8AAAAJ&citpid=7" alt="Naoto Yokoya">
+      <div class="speaker-content">
+        <h3><a href="https://naotoyokoya.com/">Naoto Yokoya</a></h3>
+        <p><strong>Professor, University of Tokyo (Graduate School of Frontier Sciences)</strong>; leads the Geoinformatics Team at RIKEN AIP. He received his Ph.D. in aerospace engineering from the University of Tokyo in 2013. His research lies at the intersection of remote sensing and computer vision, with applications to disaster management and environmental assessment. He previously held an Alexander von Humboldt Fellowship at DLR/TUM and currently serves as Associate Editor for IEEE TPAMI, IEEE TGRS, and ISPRS JPRS; he is a Clarivate Highly Cited Researcher (2022–).</p>
       </div>
-    </section>
+    </div>
+
+    <div class="speaker-row">
+      <img src="https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=Umm6tPQAAAAJ&citpid=3" alt="Christopher F. Brown">
+      <div class="speaker-content">
+        <h3><a href="https://scholar.google.com/citations?user=Umm6tPQAAAAJ&hl=en">Christopher F. Brown</a></h3>
+        <p><strong>Senior Research Engineer, DeepMind</strong>, leading research at the intersection of AI and Earth observation. His work focuses on developing and applying large‑scale AI models to address global environmental challenges. Christopher has led several projects, including AlphaEarth, Cloud Score+, and Dynamic World. His research aims to provide the scientific community with new tools to better monitor, model, and protect Earth's systems.</p>
+      </div>
+    </div>
+
+    <div class="speaker-row">
+      <img src="https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=rBv-4qEAAAAJ&citpid=3" alt="Daniel Cusworth">
+      <div class="speaker-content">
+        <h3><a href="http://www.dancusworth.com/">Daniel Cusworth</a></h3>
+        <p><strong>Science Director, Carbon Mapper</strong>. Carbon Mapper’s mission is to drive greenhouse gas emission reductions by making methane and carbon dioxide data accessible and actionable. He was formerly a Data Scientist at the NASA Jet Propulsion Laboratory and a Research Scientist at the University of Arizona and worked on quantification of anthropogenic carbon dioxide and methane emissions from regional to facility scales. He received his B.S. in Applied Math/Atmospheric Sciences at UCLA and Ph.D. in Atmospheric Chemistry at Harvard University.</p>
+      </div>
+    </div>
+
+    <div class="speaker-row">
+      <img src="https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=lJ_oh2EAAAAJ&citpid=5" alt="Piotr Bojanowski">
+      <div class="speaker-content">
+        <h3><a href="https://scholar.google.com/citations?user=lJ_oh2EAAAAJ&hl=en">Piotr Bojanowski</a></h3>
+        <p><strong>Research Scientist Director, Meta FAIR</strong>. Before joining Meta FAIR in 2016, he completed a PhD in computer vision and machine learning at École Normale Supérieure, under the supervision of Jean Ponce, Cordelia Schmidt, Ivan Laptev, and Josef Sivic. He was a key contributor to FastText, a library for efficient learning of word representations and text classification. His work focuses on large‑scale unsupervised and self‑supervised learning in computer vision, and he led the development of DINOv2 and DINOv3—state‑of‑the‑art large vision models trained without human supervision.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 
     <!-- Accepted Papers -->
     <section id="accepted">
